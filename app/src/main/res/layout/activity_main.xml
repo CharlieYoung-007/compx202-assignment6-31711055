@@ -27,6 +27,7 @@
             android:src="@drawable/logo_full"/>
 
         <Button
+            android:id="@+id/onClickButtonStart"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
@@ -34,7 +35,8 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:background="@drawable/button_style"
             android:textColor="@color/white"
-            android:text="@string/buttonStart"/>
+            android:text="@string/buttonStart"
+            android:onClick="onClickButtonStart"/>
 
     </LinearLayout>
 
