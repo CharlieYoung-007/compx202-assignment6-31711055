@@ -4,13 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
-import android.widget.ImageSwitcher;
+import android.view.View;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 
+
 public class DetailActivity extends AppCompatActivity {
+
+    String context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,23 +31,35 @@ public class DetailActivity extends AppCompatActivity {
             imageView.setImageResource(drawableId);
             array = getResources().getStringArray(R.array.Bachelor_of_Computer_Graphic_Design);
             detailView.setText(array[2]);
-        }else if(title.equals("Bachelor of Media and Creative Technologies")){
+            context = array[2];
+        } else if (title.equals("Bachelor of Media and Creative Technologies")) {
             drawableId = getResources().getIdentifier("bmct", "drawable", getPackageName());
             imageView.setImageResource(drawableId);
             array = getResources().getStringArray(R.array.Bachelor_of_Media_and_Creative_Technologies);
             detailView.setText(array[2]);
-        }else if(title.equals("Bachelor of Business Analysis")){
+            context = array[2];
+        } else if (title.equals("Bachelor of Business Analysis")) {
             drawableId = getResources().getIdentifier("bba", "drawable", getPackageName());
             imageView.setImageResource(drawableId);
             array = getResources().getStringArray(R.array.Bachelor_of_Business_Analysis);
             detailView.setText(array[2]);
-        }else if(title.equals("English Foundation Program")){
+            context = array[2];
+        } else if (title.equals("English Foundation Program")) {
             drawableId = getResources().getIdentifier("efp", "drawable", getPackageName());
             imageView.setImageResource(drawableId);
             array = getResources().getStringArray(R.array.English_Foundation_Program);
             detailView.setText(array[2]);
+            context = array[2];
         }
 
+    }
 
+    public void onClickShare(View v) {
+//        Toast.makeText(this, "message", Toast.LENGTH_SHORT).show();
+        Intent shareIntent = new Intent();
+        shareIntent.setAction(Intent.ACTION_SEND);
+        shareIntent.putExtra(Intent.EXTRA_TEXT, context);
+        shareIntent.setType("text/plain");
+        startActivity(shareIntent);
     }
 }
