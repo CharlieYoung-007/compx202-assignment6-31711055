@@ -16,20 +16,24 @@ public class ListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
-        String[] array = getResources().getStringArray(R.array.listArray);
+        final String[] array = getResources().getStringArray(R.array.listArray);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, array);
         ListView listView = (ListView) findViewById(R.id.listView);
         listView.setAdapter(adapter);
+
+
+        // Create a message handling object as an anonymous class.
+        AdapterView.OnItemClickListener messageClickedHandler = new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView parent, View v, int position, long id) {
+                Intent intent = new Intent(ListActivity.this, DetailActivity.class);
+                intent.putExtra("title", array[position]);
+                startActivity(intent);
+            }
+        };
+
         listView.setOnItemClickListener(messageClickedHandler);
     }
 
-    // Create a message handling object as an anonymous class.
-    private AdapterView.OnItemClickListener messageClickedHandler = new AdapterView.OnItemClickListener() {
-        public void onItemClick(AdapterView parent, View v, int position, long id) {
-            Intent intent = new Intent(ListActivity.this, DetailActivity.class);
-            startActivity(intent);
-        }
-    };
 
 
 }
