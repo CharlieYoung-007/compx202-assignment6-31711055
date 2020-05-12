@@ -1,7 +1,6 @@
 package com.example.assignment6;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -17,16 +16,13 @@ public class DetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
+
         Intent intent = getIntent();
         String title = intent.getStringExtra("title"); //get the title name
         TextView textView = (TextView) findViewById(R.id.textviewDetailTitle);
         textView.setText(title);
 
-        int drawableId; //the Variable to store pictures
         String titleArray;
-        String imageArray;
-
-
         titleArray = title.replace(" ", "_"); //replace the space with '_'
 
         //get the detail text
@@ -37,6 +33,8 @@ public class DetailActivity extends AppCompatActivity {
         context = detailArray[2];
 
         //get the image
+        String imageArray;
+        int drawableId; //the Variable to store pictures
         imageArray = detailArray[0];
         ImageView imageView = (ImageView) findViewById(R.id.imageviewDetailImage);
         drawableId = getResources().getIdentifier(imageArray, "drawable", getPackageName());
