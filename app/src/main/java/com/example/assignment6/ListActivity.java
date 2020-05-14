@@ -25,7 +25,7 @@ public class ListActivity extends AppCompatActivity {
         // Create a message handling object as an anonymous class.
         AdapterView.OnItemClickListener messageClickedHandler = new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView parent, View v, int position, long id) {
-                Intent intent = new Intent(ListActivity.this, DetailActivity.class);
+                Intent intent = new Intent(parent.getContext(), DetailActivity.class);
                 intent.putExtra("title", array[position]);
                 startActivity(intent);
             }
